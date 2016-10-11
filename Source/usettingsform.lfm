@@ -1,0 +1,39 @@
+object FormSettings: TFormSettings
+  Left = 590
+  Height = 75
+  Top = 358
+  Width = 753
+  Caption = 'Settings'
+  ClientHeight = 75
+  ClientWidth = 753
+  Constraints.MaxHeight = 75
+  Constraints.MinHeight = 75
+  OnCreate = FormCreate
+  LCLVersion = '1.6.0.4'
+  object LabelCommand: TLabel
+    Left = 8
+    Height = 13
+    Top = 12
+    Width = 47
+    Caption = 'Command'
+    ParentColor = False
+  end
+  object EditCommand: TEdit
+    Left = 64
+    Height = 21
+    Top = 8
+    Width = 680
+    Anchors = [akTop, akLeft, akRight]
+    TabOrder = 0
+  end
+  object ButtonSave: TButton
+    Left = 669
+    Height = 25
+    Top = 40
+    Width = 75
+    Anchors = [akTop, akRight]
+    Caption = 'Save'
+    OnClick = ButtonSaveClick
+    TabOrder = 1
+  end
+end
