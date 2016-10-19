@@ -16,9 +16,14 @@ type
     ButtonFire: TButton;
     ListBoxFiles: TListBox;
     MainMenu: TMainMenu;
+    MenuItemRemove: TMenuItem;
     MenuItemSettings: TMenuItem;
+    PopupMenuRemove: TPopupMenu;
     procedure ButtonFireClick(Sender: TObject);
     procedure FormDropFiles(Sender: TObject; const FileNames: array of string);
+    procedure ListBoxFilesKeyDown(Sender: TObject; var Key: word;
+      Shift: TShiftState);
+    procedure MenuItemRemoveClick(Sender: TObject);
     procedure MenuItemSettingsClick(Sender: TObject);
   private
     { private declarations }
@@ -44,12 +49,41 @@ procedure TFormMain.FormDropFiles(Sender: TObject; const FileNames: array of str
 var
   HFileIndex: integer = 0;
 begin
-
   for HFileIndex := 0 to High(FileNames) do
   begin
     if not (DirectoryExists(FileNames[HFileIndex])) then
       ListBoxFiles.Items.Add(FileNames[HFileIndex]);
   end;
+end;
+
+procedure TFormMain.ListBoxFilesKeyDown(Sender: TObject; var Key: word;
+  Shift: TShiftState);
+var
+  HIndex: integer;
+begin
+  if key = $2E then
+  begin
+    ListBoxFiles.Items.BeginUpdate;
+    for HIndex := ListBoxFiles.Items.Count - 1 downto 0 do
+    begin
+      if ListBoxFiles.Selected[HIndex] then
+        ListBoxFiles.Items.Delete(HIndex);
+    end;
+    ListBoxFiles.Items.EndUpdate;
+  end;
+end;
+
+procedure TFormMain.MenuItemRemoveClick(Sender: TObject);
+var
+  HIndex: integer;
+begin
+  ListBoxFiles.Items.BeginUpdate;
+  for HIndex := ListBoxFiles.Items.Count - 1 downto 0 do
+  begin
+    if ListBoxFiles.Selected[HIndex] then
+      ListBoxFiles.Items.Delete(HIndex);
+  end;
+  ListBoxFiles.Items.EndUpdate;
 end;
 
 procedure TFormMain.ButtonFireClick(Sender: TObject);

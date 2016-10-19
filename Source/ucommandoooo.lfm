@@ -2134,6 +2134,9 @@ object FormMain: TFormMain
     Width = 562
     Anchors = [akTop, akLeft, akRight, akBottom]
     ItemHeight = 0
+    MultiSelect = True
+    OnKeyDown = ListBoxFilesKeyDown
+    PopupMenu = PopupMenuRemove
     TabOrder = 0
   end
   object ButtonFire: TButton
@@ -2150,6 +2153,14 @@ object FormMain: TFormMain
     object MenuItemSettings: TMenuItem
       Caption = 'Settings'
       OnClick = MenuItemSettingsClick
+    end
+  end
+  object PopupMenuRemove: TPopupMenu
+    left = 148
+    top = 127
+    object MenuItemRemove: TMenuItem
+      Caption = 'Remove'
+      OnClick = MenuItemRemoveClick
     end
   end
 end
