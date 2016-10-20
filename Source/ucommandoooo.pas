@@ -121,7 +121,7 @@ begin
           ['/c "' + HCommand + '"'], HOutputTemp);
 {$ENDIF Windows}
 {$IFDEF Unix}
-        RunCommandIndir(HPath, HCommand, HOutput);
+        RunCommandIndir(HPath, '/bin/bash', ['-c', HCommand], HOutputTemp);
 {$ENDIF Unix}
         HOutput.Add('commandoooo: ' + HCommand);
         HOutput.Add(HOutputTemp);
