@@ -56,7 +56,7 @@ var
 begin
   if not FileExists(GetAppConfigFile(False)) then
   begin
-    EditCommand.Text := 'C:\temp\mycommand -R $comandoooo$';
+    EditCommand.Text := 'C:\temp\mycommand -R $commandoooo$';
   end
   else
   begin
